@@ -6,7 +6,7 @@ O projeto visa em apresentar uma loja online simples, com um carrinho de compras
 ## Instruções de uso
 
 - Clone esse repositório ou baixe o arquivo .zip e descompacte onde desejar.  
-  `git clone repositorio nomedapastadesejada`
+  `git clone https://github.com/thicsilva/lojinhaphp.git nomedapastadesejada`
 - É necessário rodar o **composer** para que seja gerado o autoload. Navegue até a pasta do projeto pelo seu terminal/prompt e digite:  
   `composer install`
 - Importe o arquivo **`db.sql`** pelo PHPMyAdmin, ou algum cliente visual para MySQL. Caso tenha a variável MYSQL configurada no seu ambiente de desenvolvimento, é possível importar através da linha de comando  
