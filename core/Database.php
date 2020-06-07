@@ -10,8 +10,13 @@ class Database
     public static function getInstance()
     {
         if (!isset(self::$_pdo)) {
-            self::$_pdo = new PDO("{DATABASE['db_driver']}:dbname={DATABASE['db_name']};host={DATABASE['db_host']};port={DATABASE['db_port']}", DATABASE['db_user'], DATABASE['db_password']);
-
+            self::$_pdo = new PDO("mysql:dbname=" . DATABASE['db_name'] . ";host=" .DATABASE['db_host'] . ";port=" . DATABASE['db_port'], 
+                DATABASE['db_user'], 
+                DATABASE['db_password'], 
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_PERSISTENT => false
+                ]);
         }
 
         return self::$_pdo;
