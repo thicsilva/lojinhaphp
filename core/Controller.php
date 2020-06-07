@@ -25,13 +25,12 @@ class Controller
 
     private function _render($folder, $viewName, $viewData = [])
     {
-        $viewsFolder = dirname(__DIR__, 1) . "/src/view";
-        if (file_exists($viewsFolder . "/" . $folder . "/" . $viewName . ".php")) {
+        if (file_exists('../src/view/' . $folder . '/' . $viewName . '.php')) {
 
             extract($viewData);
             $render = fn($vN, $vD = []) => $this->renderPartial($vN, $vD);
             $base = $this->getBaseUrl();
-            require $viewsFolder . "/" . $folder . "/" . $viewName . ".php";
+            require '../src/view/' . $folder . '/' . $viewName . '.php';
         }
     }
 
