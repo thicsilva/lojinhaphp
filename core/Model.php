@@ -35,18 +35,18 @@ abstract class Model
     {
         $columns = $this->prepare($this->attributes);
         if (!isset($this->id)) {
-            $query = "INSERT INTO $table (" . implode(', ', array_keys($columns)) . ") VALUES (" . implode(', ', array_values($columns)) . ");";
+            $query = "INSERT INTO $this->table (" . implode(', ', array_keys($columns)) . ") VALUES (" . implode(', ', array_values($columns)) . ");";
         } else {
             foreach ($columns as $key => $value) {
                 if ($key !== 'id') {
                     $define[] = "{$key}={$value}";
                 }
             }
-            $query = "UPDATE $table SET " . implode(', ', $define) . "WHERE id='{$this->id}';";
+            $query = "UPDATE $this->table SET " . implode(', ', $define) . "WHERE id='{$this->id}';";
         }
-        $connection->prepare($query);
-        if ($connection->execute()) {
-            return $connection->rowCount();
+        $this->connection->prepare($query);
+        if ($this->connection->execute()) {
+            return $this->connection->rowCount();
         }
         return false;
     }
@@ -78,7 +78,7 @@ abstract class Model
     public static function all()
     {
         $conn = Database::getInstance();
-        $sql = "SELECT * FROM $table";
+        $sql = "SELECT * FROM " . get_called_class()::$table;
         $stmt = $conn->prepare($sql);
         $result = [];
         if ($stmt->execute()) {
@@ -94,7 +94,7 @@ abstract class Model
 
     public function count()
     {
-        $sql = "SELECT count(*) FROM $table ;";
+        $sql = "SELECT count(*) FROM $this->table ;";
         $count = $this->connection->exec($sql);
         if ($count) {
             return (int) $count;
@@ -105,7 +105,7 @@ abstract class Model
     public static function find($id)
     {
         $conn = Database::getInstance();
-        $sql = "SELECT * FROM $table WHERE id='{$id}';";
+        $sql = "SELECT * FROM " . get_called_class()::$table . "WHERE id='{$id}';";
         $stmt = $conn->prepare($sql);
         if ($stmt->execute()) {
             if ($stmt->rowCount() > 0) {
@@ -120,7 +120,7 @@ abstract class Model
 
     public function destroy($id)
     {
-        $sql = "DELETE FROM $table WHERE id='{$id}';";
+        $sql = "DELETE FROM $this->table WHERE id='{$id}';";
         if ($this->connection->exec($sql)) {
             return true;
         }
