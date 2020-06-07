@@ -1,3 +1,3 @@
-<?php $render("header")?>
+<?php $render('site/header');?>
 
-<?="Vamos começar" . $success;?>
+Olá mundo!

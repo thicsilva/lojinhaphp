@@ -1,3 +1,3 @@
-<?php
+<?php $render('site/header');?>
 
-echo "Página não encontrada";
+Página não encontrada!
