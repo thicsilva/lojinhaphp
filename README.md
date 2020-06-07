@@ -1,6 +1,6 @@
 ## Lojinha PHP
 
-Este é um projeto para apresentação na displina de Linguagem de Programação 2 pela Fatec Bauru.  
+Este é um projeto para apresentação na disciplina de Linguagem de Programação 2 pela Fatec Bauru.  
 O projeto visa em apresentar uma loja online simples, com um carrinho de compras e uma área administrativa para inclusão de produtos.
 
 ## Instruções de uso
