@@ -19,7 +19,6 @@ class Controller
             $base .= ":" . $_SERVER['SERVER_PORT'];
         }
         $base .= CONFIG['base_dir'];
-
         return $base;
     }
 
@@ -29,10 +28,8 @@ class Controller
 
             extract($viewData);
 
-            $render = function($vN, $vD = []){
-                var_dump($vN);
-                var_dump($vD);
-                return $this->renderPartial($vN, $vD);
+            $render = function ($vN, $vD = []) {
+                $this->renderPartial($vN, $vD);
             };
             $base = $this->getBaseUrl();
             require '../src/view/' . $folder . '/' . $viewName . '.php';
@@ -41,7 +38,7 @@ class Controller
 
     private function renderPartial($viewName, $viewData = [])
     {
-        $this->_render('partials', $viewData, $viewData);
+        $this->_render('partials', $viewName, $viewData);
     }
 
     public function render($viewName, $viewData = [])

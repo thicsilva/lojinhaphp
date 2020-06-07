@@ -8,8 +8,8 @@ use Exception;
 abstract class Model
 {
     protected static $connection;
-    protected $table = NULL;
-    protected $idField = NULL;
+    protected $table = null;
+    protected $idField = null;
     protected $logTimestamp;
     protected $attributes;
 
@@ -20,10 +20,11 @@ abstract class Model
         if (!is_bool($this->logTimestamp)) {
             $this->logTimestamp = true;
         }
-        if ($this->table == NULL) {
-            $this->table = strtolower(get_class($this));
+        if ($this->table == null) {
+            $this->table = strtolower(explode('\\', get_called_class()));
+            $this->table = end($this->table);
         }
-        if ($this->idField == NULL) {
+        if ($this->idField == null) {
             $this->idField = 'id';
         }
     }
@@ -102,23 +103,24 @@ abstract class Model
         if (isset($this->attributes[$this->idField])) {
             $sets = [];
             foreach ($newContent as $key => $value) {
-                if ($key === $this->idField || $key == 'created_at' || $key == 'updated_at')
+                if ($key === $this->idField || $key == 'created_at' || $key == 'updated_at') {
                     continue;
+                }
+
                 $sets[] = "{$key} = {$value}";
             }
-            if ($this->logTimestamp === TRUE) {
+            if ($this->logTimestamp === true) {
                 $newContent['updated_at'] = "'" . date('Y-m-d H:i:s') . "'";
             }
             $sql = "UPDATE $this->table SET " . implode(', ', $newContent) . "WHERE {$this->idField}='{$this->attributes[$this->idField]}';";
         } else {
-            if ($this->logTimestamp === TRUE) {
+            if ($this->logTimestamp === true) {
                 $newContent['created_at'] = "'" . date('Y-m-d H:i:s') . "'";
                 $newContent['updated_at'] = "'" . date('Y-m-d H:i:s') . "'";
             }
             $sql = "INSERT INTO {$this->table} (" . implode(', ', array_keys($newContent)) . ') VALUES (' . implode(',', array_values($newContent)) . ');';
         }
-        $stmt = self::$connection->prepare($sql);
-        var_dump($stmt);
+        $stmt = self::$connection->prepare($sql);        
         if ($stmt->execute()) {
             return $stmt->rowCount();
         }
@@ -178,9 +180,9 @@ abstract class Model
     public function destroy()
     {
         if (isset($this->content[$this->idField])) {
- 
+
             $sql = "DELETE FROM {$this->table} WHERE {$this->idField} = {$this->content[$this->idField]};";
-     
+
             if (self::$connection) {
                 return self::$connection->exec($sql);
             } else {

@@ -8,7 +8,7 @@ class Request
     {
         $url = filter_input(INPUT_GET, "request");
         $url = str_replace(CONFIG['base_dir'], '', $url);
-        return "/{$url}";
+        return "/" . $url;
     }
 
     public static function getMethod()

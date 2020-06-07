@@ -1,7 +1,7 @@
 <?php
 
 define("CONFIG", [
-    "base_dir" => dirname(__DIR__, 1) . "/public",
+    "base_dir" => "/" . basename(dirname(__DIR__, 1)) . "/public",
 ]);
 
 define("DATABASE", [

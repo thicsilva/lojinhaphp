@@ -42,6 +42,7 @@ class BaseRouter
                     if (isset($callbackSplit[1])) {
                         $action = $callbackSplit[1];
                     }
+
                     break;
                 }
             }
