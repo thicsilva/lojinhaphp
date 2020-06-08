@@ -1,6 +1,6 @@
 /*
 SQLyog Community v13.1.5  (64 bit)
-MySQL - 10.4.6-MariaDB : Database - lojinha
+MySQL - 10.3.16-MariaDB : Database - lojinha
 *********************************************************************
 */
 
@@ -75,12 +75,10 @@ CREATE TABLE `product` (
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL DEFAULT 0.00,
-  `slug` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(100) COLLATE utf8_unicode_ci DEFAULT 'noimage.png',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uq_product_slug` (`slug`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `product` */

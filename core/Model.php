@@ -21,8 +21,8 @@ abstract class Model
             $this->logTimestamp = true;
         }
         if ($this->table == null) {
-            $this->table = strtolower(explode('\\', get_called_class()));
-            $this->table = end($this->table);
+            $this->table = explode('\\', get_called_class());
+            $this->table = strtolower(end($this->table));
         }
         if ($this->idField == null) {
             $this->idField = 'id';
@@ -120,7 +120,7 @@ abstract class Model
             }
             $sql = "INSERT INTO {$this->table} (" . implode(', ', array_keys($newContent)) . ') VALUES (' . implode(',', array_values($newContent)) . ');';
         }
-        $stmt = self::$connection->prepare($sql);        
+        $stmt = self::$connection->prepare($sql);
         if ($stmt->execute()) {
             return $stmt->rowCount();
         }

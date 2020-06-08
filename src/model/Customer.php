@@ -6,18 +6,12 @@ use Core\Model;
 
 class Customer extends Model
 {
-    protected $table = 'customer';
-    protected $logTimestamp = TRUE;
+    protected $logTimestamp = true;
 
-    public function __construct()
+    public function encryptPassword($password)
     {
-        parent::__construct();
-    }
-
-    public function encryptPassword($password){
         $password = password_hash($password, PASSWORD_BCRYPT);
         return $password;
     }
 
-    
 }

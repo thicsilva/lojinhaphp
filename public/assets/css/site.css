@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+body,
+ul,
+li,
+h1,
+h2,
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  color: #264653;
+}
+
+a {
+  color: #264653;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.btn {
+  display: block;
+  padding: 10px 30px;
+  background: #2a9d8f;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.2);
+  transition: all 0.3s;
+  border: none;
+  font-family: "Raleway", Helvetica, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #2a6962;
+  transform: scale(1.1);
+}
+.btn-disabled,
+.btn-disabled:hover {
+  background: #bbbbcc;
+  transform: scale(1);
+}
+
+#site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  border-radius: 4px;
+  border: 1px solid #fff;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
+  transition: all 0.3s;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+input:hover,
+input:focus,
+textarea:hover,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 6px 12px rgba(30, 60, 90, 0.2);
+  border-color: #2a9d8f;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(30, 60, 90, 0.1);
+}
+
+.logo {
+  padding: 10px 0;
+}
+.logo img {
+  width: 90px;
+}
+
+footer {
+  background: #2a9d8f;
+  padding: 25px 0;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #fff;
+  position: relative;
+  top: 75px;
+}
+
+.products-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  margin: 30px;
+}
+
+@media screen and (max-width: 500px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin: 10px;
+  }
+}
+
+.product {
+  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
+  padding: 10px;
+  background: #fff;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.product:hover {
+  box-shadow: 0 6px 12px rgba(30, 60, 90, 0.2);
+  transform: scale(1.1);
+  position: relative;
+  z-index: 1;
+}
+.product img {
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+.name {
+  margin-bottom: 10px;
+  font-family: "Raleway", Helvetica, Arial, sans-serif;
+}
+.price {
+  color: #f4a261;
+  font-weight: bold;
+}
+.no-result {
+  text-align: center;
+}
+
+.search > form {
+  max-width: 600px;
+  margin: 30px auto 60px auto;
+  position: relative;
+  padding: 0 10px;
+}
+
+.search > form > #search {
+  width: 100%;
+  padding: 20px;
+  border: none;
+}
+
+.search > form > #search:hover,
+.search > form > #search:focus {
+  transform: scale(1.1);
+}
+
+.search > form > #find {
+  width: 62px;
+  height: 62px;
+  background: url("../img/search.svg") no-repeat center center;
+  text-indent: -150px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
