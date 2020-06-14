@@ -31,7 +31,6 @@ class BaseRouter
                     }
 
                     // Faz a associação
-                    $args = array();
                     foreach ($matches as $key => $match) {
                         $args[$itens[$key]] = $match;
                     }

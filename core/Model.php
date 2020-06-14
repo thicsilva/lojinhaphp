@@ -144,12 +144,14 @@ abstract class Model
         }
     }
 
-    public function count()
+    public static function count()
     {
-        $sql = "SELECT count(*) FROM $this->table ;";
-        $count = self::$connection->exec($sql);
-        if ($count) {
-            return (int) $count;
+        $class = get_called_class();
+        $table = (new $class())->table;
+        $sql = "SELECT count(*) FROM $table ;";
+        $count = self::$connection->prepare($sql);
+        if ($count->execute()) {
+            return (int) $count->fetchColumn();
         }
         return false;
     }
