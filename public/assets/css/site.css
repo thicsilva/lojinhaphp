@@ -110,7 +110,7 @@ nav {
 
 footer {
   background: #f5cb5c;
-  padding: 25px 0;
+  padding: 15px 0;
   text-align: center;
   font-size: 1.2rem;
   color: #333533;
@@ -145,50 +145,49 @@ footer {
   background: #fff;
   border-radius: 4px;
   transition: all 0.2s;
+  position: relative;
 }
 .product:hover {
   box-shadow: 0 6px 12px rgba(30, 60, 90, 0.2);
   transform: scale(1.02);
-  position: relative;
   z-index: 1;
 }
 .product img {
   border-radius: 4px;
   margin-bottom: 20px;
 }
-.name {
+.product .name {
   margin-bottom: 10px;
-  font-family: "Raleway", Helvetica, Arial, sans-serif;
+  line-height: 1.2rem;
+  font-family: "Raleway", sans-serif;
 }
-.price {
-  color: #f5cb5c;
+.product .price {
+  position: absolute;
+  left: 10px;
+  bottom: 103px;
+  color: #e8eddf;
+  background-color: rgba(51, 53, 51, 0.4);
   font-weight: bold;
+  padding: 5px;
+  border-radius: 4px;
 }
-.description {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
+.product .description {
+  font-weight: 0.9rem;
 }
+
 .no-result {
   text-align: center;
   font-size: 1.3rem;
 }
 
-.search {
-  display: grid;
-  grid-template-columns: 35px 1fr 35px;
-  grid-template-areas: ". form .";
-}
-
 .search form {
   display: flex;
-  flex: 1;
   align-items: center;
   position: relative;
   margin: 0 auto;
   padding: 0 10px;
-  width: 100%;
-  grid-area: form;
+  max-width: 800px;
 }
 
 .search form #search {
@@ -249,4 +248,25 @@ footer {
   text-align: center;
   font-size: 0.8rem;
   font-weight: bolder;
+}
+
+.pagination ul {
+  grid-column: 1 / -1;
+}
+
+.pagination li {
+  display: inline-block;
+}
+
+.pagination li a {
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin: 4px;
+}
+
+.pagination li a:hover,
+.pagination li a.active {
+  color: #242423;
+  font-weight: bold;
+  background-color: #f5cb5c;
 }
