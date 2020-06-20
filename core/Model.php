@@ -165,7 +165,7 @@ abstract class Model
         $sql = 'SELECT * FROM ' . (is_null($table) ? strtolower($class) : $table);
         $sql .= ' WHERE ' . (is_null($idField) ? 'id' : $idField);
         $sql .= " = {$parameter} ;";
-
+        
         if (self::$connection) {
             $result = self::$connection->query($sql);
 

@@ -10,9 +10,21 @@
             <?php foreach ($products as $product) : ?>
                 <div class="product">
                     <a href="#">
-                        <img src="//picsum.photos/800/600" alt="produto">
-                        <h2 class="name"><?= $product->name ?></h2>
-                        <p class="price">R$ <?= number_format($product->price, 2, ',', '.') ?></p>
+                        <div class="product-image">
+                            <img src="//picsum.photos/800/600" alt="produto">
+                            <p class="price">R$ <?= number_format($product->price, 2, ',', '.') ?></p>
+                        </div>
+                        <div class="product-action">
+                            <h2 class="name"><?= $product->name ?></h2>
+                            <form action="#" method="post">
+                                <input type="hidden" name="product" value="<?= $product->id ?>">
+                                <button type="submit" title="Adicionar aos favoritos" class="btn-small love"><i class="fas fa-heart"></i></button>
+                            </form>
+                            <form action="<?=$base?>/cart/add" method="post">
+                                <input type="hidden" name="product" value="<?= $product->id ?>">
+                                <button type="submit" title="Adicionar ao carrinho" class="btn-small cart"><i class="fas fa-shopping-basket"></i></button>
+                            </form>
+                        </div>
                         <p class="description">
                             <?php
                             $pos = strpos($product->description, ' ', 50);
