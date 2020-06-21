@@ -34,17 +34,20 @@ img {
 }
 
 .btn {
-  display: block;
+  display: inline-block;
   padding: 10px 30px;
   background: #f5cb5c;
   border-radius: 4px;
   color: #242423;
   text-align: center;
-  font-size: 1rem;
+  white-space: nowrap;
+  vertical-align: middle;
   box-shadow: 0 4px 8px rgba(30, 60, 90, 0.2);
   transition: all 0.3s;
   border: none;
+  font-size: 1rem;
   font-family: "Raleway", Helvetica, Arial, sans-serif;
+  font-weight: 400;
   cursor: pointer;
 }
 
@@ -67,7 +70,6 @@ img {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  width: 100vw;
 }
 
 main {
@@ -212,12 +214,17 @@ footer {
 }
 
 .btn-small {
+  display: inline-block;
   border: 1px solid rgba(36, 36, 35, 0.2);
   border-radius: 100%;
   padding: 5px;
   width: 30px;
   height: 30px;
   background-color: transparent;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  font-weight: 400;
 }
 .btn-small:hover {
   cursor: pointer;
@@ -377,25 +384,60 @@ footer {
 }
 
 .cart-item {
+  display: grid;
+  grid-template-columns: 150px 1fr 200px;
+  grid-template-areas: "image detail price form";
+  grid-gap: 15px;
+  padding: 15px;
+}
+
+.cart-item img {
+  grid-area: image;
+}
+
+.card-item h2 {
+  grid-area: detail;
+}
+
+.card-item p {
+  grid-area: price;
+}
+
+.card-item-action {
+  grid-area: form;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
-.cart-item form {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: right;
+.cart-item-action form {
+  display: inline;
 }
 
 .cart-item form input {
-  vertical-align: middle;
-  margin: 5px 10px 5px 0;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  width: 70px;
+}
+
+.form-footer {
+  margin-top: 10px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.checkout-form .form-footer .btn {
+  margin-top: 10px;
+  width: 100%;
 }
 
 .checkout-form {
   grid-area: checkout;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(30, 60, 90, 0.1);
+  padding: 15px;
+  background-color: rgba(51, 53, 51, 0.2);
+  border-radius: 5px;
+  margin-left: 10px;
 }
