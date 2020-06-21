@@ -76,10 +76,6 @@ main {
   flex: 1;
 }
 
-label {
-  margin-bottom: 5px;
-}
-
 input,
 textarea {
   border-radius: 4px;
@@ -336,6 +332,12 @@ footer {
   font-weight: bolder;
 }
 
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .pagination ul {
   grid-column: 1 / -1;
 }
@@ -455,7 +457,6 @@ footer {
   font-weight: 300;
 }
 
-
 .item-buttons input:focus,
 .item-buttons button:focus {
   outline: 0;
@@ -466,11 +467,11 @@ footer {
   padding-top: 27px;
   text-align: center;
   font-size: 16px;
-  color: #43484D;
+  color: #43484d;
   font-weight: 300;
 }
 
-@media screen and (max-width:1010px){
+@media screen and (max-width: 1010px) {
   .cart-items {
     width: 100%;
     height: auto;
@@ -512,7 +513,8 @@ footer {
 
 .checkout-form {
   grid-area: checkout;
-  position: relative;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 2px 4px rgba(30, 60, 90, 0.1);
   padding: 15px;
   background-color: rgba(51, 53, 51, 0.2);
@@ -520,8 +522,11 @@ footer {
   margin-left: 10px;
 }
 
+.checkout-form form input {
+  margin: 10px 0;
+}
+
 .checkout-form .form-footer .btn {
   margin-top: 10px;
   flex-grow: 1;
 }
-

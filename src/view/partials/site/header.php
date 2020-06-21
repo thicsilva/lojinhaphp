@@ -13,7 +13,7 @@
   <div id="site">
     <header>
       <nav>
-        <a href="<?= $base ?>" class="logo">
+        <a href="<?=$base?>" class="logo">
           <img src="<?=$base?>/assets/img/logo.png" alt="Logo">
         </a>
         <section class="search">
@@ -25,11 +25,11 @@
         <section class="menu">
           <a href="<?=$base?>/cart" class="cart">
             <i class="fas fa-shopping-basket"></i>
-            <?php if(!empty($_SESSION['cart'])):?>
+            <?php if (!empty($_SESSION['cart'])): ?>
             <span class="badge"><?=count($_SESSION['cart'])?></span>
-            <?php endif ?>
+            <?php endif?>
           </a>
-          <a href="#" class="wish">
+          <a href="<?=$base?>/wish" class="wish">
             <i class="fas fa-heart"></i>
           </a>
 
