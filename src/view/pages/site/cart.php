@@ -1,25 +1,37 @@
 <?php $render('site/header'); ?>
-<?php if (!empty($cartItems)) : 
+<?php if (!empty($cartItems)) :
   $totalPrice = 0; ?>
   <section class="cart-container">
     <div class="cart-items">
+      <div class="cart-title">
+        Seu carrinho de compras
+      </div>
       <?php foreach ($cartItems as $item) :
         $itemPrice = $item['price'] * $item['quantity'];
         $totalPrice += $itemPrice; ?>
         <div class="cart-item">
-          <img src="//picsum.photos/50/50" alt="product">
-          <h2 class="name"><?= $item['name'] ?></h2>
-          <p class="price"> R$ <?= number_format($itemPrice, 2, ',', '.') ?> </p>
-          <div class="cart-item-action">
-            <form action="<?= $base ?>/cart/update" method="post">
-              <input type="hidden" name="product" value="<?= $item['id'] ?>">
+          <div class="item-buttons">
+            <form action="<?=$base?>/cart/remove" method="post">
+              <input type="hidden" name="product" value="<?=$item['id']?>">
+              <button type="submit" class="btn-small delete"><i class="fas fa-trash"></i></button>
+            </form>
+          </div>
+          <div class="item-image">
+            <img src="<?=$base?>/assets/media/<?=$item['image']?>" alt="product">
+          </div>
+          <div class="item-description">
+            <span><?= $item['name'] ?></span>
+            <span>R$ <?= number_format($item['price'], 2, ',', '.')?></span>
+          </div>
+          <div class="item-quantity">
+            <form action="<?=$base?>/cart/update" method="post">
+              <input type="hidden" name="product" value="<?=$item['id']?>">
               <input type="number" step="1" min="0" name="quantity" id="quantity-<?= $item['id'] ?>" value="<?= $item['quantity'] ?>">
               <button type="submit" class="btn-small update"><i class="fas fa-sync"></i></button>
             </form>
-            <form action="<?= $base ?>/cart/remove" method="post">
-              <input type="hidden" name="product" value="<?= $item['id'] ?>">
-              <button type="submit" class="btn-small delete"><i class="fas fa-trash"></i></button>
-            </form>
+          </div>
+          <div class="item-price">
+            R$ <?= number_format($itemPrice, 2, ',', '.') ?>
           </div>
         </div>
       <?php endforeach ?>

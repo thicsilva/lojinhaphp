@@ -11,7 +11,7 @@
                 <div class="product">
                     <a href="#">
                         <div class="product-image">
-                            <img src="//picsum.photos/800/600" alt="produto">
+                            <img src="<?=$base?>/assets/media/<?=$product->image?>" alt="produto">
                             <p class="price">R$ <?= number_format($product->price, 2, ',', '.') ?></p>
                         </div>
                         <div class="product-action">
