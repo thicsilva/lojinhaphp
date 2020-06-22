@@ -32,9 +32,18 @@
           <a href="<?=$base?>/wish" class="wish">
             <i class="fas fa-heart"></i>
           </a>
-
         </section>
-
       </nav>
     </header>
     <main>
+    <?php 
+      if (isset($_SESSION['flash'])): ?>
+      <div class="notification">
+        <div class="<?=$_SESSION['flash']['type']; ?>">
+          <?=$_SESSION['flash']['message']; ?>
+        </div>
+      </div>
+    <?php 
+      unset($_SESSION['flash']);
+      endif 
+    ?>
