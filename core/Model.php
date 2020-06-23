@@ -100,6 +100,7 @@ abstract class Model
     public function save()
     {
         $newContent = $this->prepare();
+        
         if (isset($this->attributes[$this->idField])) {
             $sets = [];
             foreach ($newContent as $key => $value) {
@@ -112,7 +113,7 @@ abstract class Model
             if ($this->logTimestamp === true) {
                 $newContent['updated_at'] = "'" . date('Y-m-d H:i:s') . "'";
             }
-            $sql = "UPDATE $this->table SET " . implode(', ', $newContent) . "WHERE {$this->idField}='{$this->attributes[$this->idField]}';";
+            $sql = "UPDATE $this->table SET " . implode(', ', $sets) . "WHERE {$this->idField}='{$this->attributes[$this->idField]}';";
         } else {
             if ($this->logTimestamp === true) {
                 $newContent['created_at'] = "'" . date('Y-m-d H:i:s') . "'";

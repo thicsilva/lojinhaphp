@@ -8,9 +8,12 @@ use Core\Controller;
 class LoginController extends Controller
 {
     public function index()
-    {
-        $senha = password_hash(123456, PASSWORD_BCRYPT);
-        $this->render('/panel/login', ['senha' => $senha]);
+    {        
+        if (isset($_SESSION['auth'])){
+            $this->redirect('/admin/home');
+        }
+        
+        $this->render('/panel/login');
     }
 
     public function login()
@@ -43,11 +46,20 @@ class LoginController extends Controller
             ];
             $this->redirect('/admin');
         }
-        $user[0]->hash = md5(microtime() + $user[0]->email);
+        $user[0]->hash = md5(microtime() . $user[0]->email);
         $user[0]->save();
         $_SESSION['auth'] = $user[0]->hash ;
 
         $this->redirect('/admin/home');
 
+    }
+
+    public function logout()
+    {
+        if (isset($_SESSION['auth'])){
+            unset($_SESSION['auth']);
+        }
+
+        $this->redirect('/admin');
     }
 }
