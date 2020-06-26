@@ -5,33 +5,33 @@ use Core\Router;
 $router = new Router();
 
 /** Rotas do Site */
-$router->get('/', 'HomeController@index');
-$router->post('/cart/add', 'CartController@add');
-$router->post('/cart/update', 'CartController@update');
-$router->post('/cart/remove', 'CartController@remove');
-$router->post('/cart/reset', 'CartController@reset');
-$router->get('/cart', 'CartController@index');
-$router->post('/wish/add', 'WishController@add');
-$router->post('/wish/remove', 'WishController@remove');
-$router->get('/wish', 'WishController@index');
+$router->get('/', 'Site\HomeController@index');
+$router->post('/cart/add', 'Site\CartController@add');
+$router->post('/cart/update', 'Site\CartController@update');
+$router->post('/cart/remove', 'Site\CartController@remove');
+$router->post('/cart/reset', 'Site\CartController@reset');
+$router->get('/cart', 'Site\CartController@index');
+$router->post('/wish/add', 'Site\WishController@add');
+$router->post('/wish/remove', 'Site\WishController@remove');
+$router->get('/wish', 'Site\WishController@index');
 
 /** Rotas do Painel */
-$router->get('/admin', 'LoginController@index');
-$router->post('/admin/login', 'LoginController@login');
-$router->post('/admin/logout', 'LoginController@logout');
+$router->get('/admin', 'Admin\LoginController@index');
+$router->post('/admin/login', 'Admin\LoginController@login');
+$router->post('/admin/logout', 'Admin\LoginController@logout');
 
-$router->get('/admin/home', 'PanelController@index');
+$router->get('/admin/home', 'Admin\PanelController@index');
 
-$router->get('/admin/product', 'ProductController@index');
-$router->get('/admin/product/create', 'ProductController@create');
-$router->post('/admin/product/store', 'ProductController@store');
-$router->get('/admin/product/edit/{id}', 'ProductController@edit');
-$router->post('/admin/product/edit/{id}', 'ProductController@update');
-$router->post('/admin/product/delete/{id}', 'ProductController@delete');
+$router->get('/admin/product', 'Admin\ProductController@index');
+$router->get('/admin/product/create', 'Admin\ProductController@create');
+$router->post('/admin/product/store', 'Admin\ProductController@store');
+$router->get('/admin/product/edit/{id}', 'Admin\ProductController@edit');
+$router->post('/admin/product/edit/{id}', 'Admin\ProductController@update');
+$router->post('/admin/product/delete/{id}', 'Admin\ProductController@delete');
 
-$router->get('/admin/user', 'UserController@index');
-$router->get('/admin/user/create', 'UserController@create');
-$router->post('/admin/user/store', 'UserController@store');
-$router->get('/admin/user/edit/{id}', 'UserController@edit');
-$router->post('/admin/user/edit/{id}', 'UserController@update');
-$router->post('/admin/user/delete/{id}', 'UserController@delete');
+$router->get('/admin/user', 'Admin\UserController@index');
+$router->get('/admin/user/create', 'Admin\UserController@create');
+$router->post('/admin/user/store', 'Admin\UserController@store');
+$router->get('/admin/user/edit/{id}', 'Admin\UserController@edit');
+$router->post('/admin/user/edit/{id}', 'Admin\UserController@update');
+$router->post('/admin/user/delete/{id}', 'Admin\UserController@delete');

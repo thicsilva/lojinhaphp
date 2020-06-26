@@ -1,19 +1,22 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Model\User;
+use App\Traits\LoginTrait;
 use Core\Controller;
 
 class LoginController extends Controller
 {
+    use LoginTrait;
+    
     public function index()
     {        
-        if (isset($_SESSION['auth'])){
+        if ($this->hasAuth()){
             $this->redirect('/admin/home');
         }
         
-        $this->render('/panel/login');
+        $this->render('/admin/login');
     }
 
     public function login()
