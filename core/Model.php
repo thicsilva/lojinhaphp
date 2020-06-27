@@ -100,7 +100,7 @@ abstract class Model
     public function save()
     {
         $newContent = $this->prepare();
-        
+
         if (isset($this->attributes[$this->idField])) {
             $sets = [];
             foreach ($newContent as $key => $value) {
@@ -123,7 +123,7 @@ abstract class Model
         }
         $stmt = self::$connection->prepare($sql);
         if ($stmt->execute()) {
-            return $stmt->rowCount();
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, get_called_class());
         }
         return false;
     }
@@ -166,7 +166,7 @@ abstract class Model
         $sql = 'SELECT * FROM ' . (is_null($table) ? strtolower($class) : $table);
         $sql .= ' WHERE ' . (is_null($idField) ? 'id' : $idField);
         $sql .= " = {$parameter} ;";
-        
+
         if (self::$connection) {
             $result = self::$connection->query($sql);
 

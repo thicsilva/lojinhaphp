@@ -14,6 +14,7 @@ $router->get('/cart', 'Site\CartController@index');
 $router->post('/wish/add', 'Site\WishController@add');
 $router->post('/wish/remove', 'Site\WishController@remove');
 $router->get('/wish', 'Site\WishController@index');
+$router->post('/checkout', 'Site\OrderController@createOrder');
 
 /** Rotas do Painel */
 $router->get('/admin', 'Admin\LoginController@index');

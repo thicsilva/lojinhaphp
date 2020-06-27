@@ -2,19 +2,24 @@
 
 namespace App\Controller\Admin;
 
-use App\Model\Product;
+use App\Handler\LoginHandler;
 use App\Model\Order;
-use App\Traits\LoginTrait;
+use App\Model\Product;
 use Core\Controller;
 
 class PanelController extends Controller
 {
-    use LoginTrait;
-    public function index(){
-        if (!$this->hasAuth()){
+    private $loggedUser;
+
+    public function __construct()
+    {
+        $this->loggedUser = LoginHandler::checkLogin();
+        if ($this->loggedUser === false) {
             $this->redirect('/admin');
         }
-
+    }
+    public function index()
+    {
         $totalProducts = Product::count();
         $totalOrders = Order::count();
         $firstDay = date('y-m-01 00:00:00');

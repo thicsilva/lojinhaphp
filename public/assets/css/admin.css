@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&display=swap");
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body,
@@ -9,125 +9,125 @@ li,
 h1,
 h2,
 p {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 body {
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    color: #333533;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #333533;
 }
 
 a {
-    color: #333533;
-    text-decoration: none;
+  color: #333533;
+  text-decoration: none;
 }
 
 img {
-    max-width: 100%;
-    display: block;
+  max-width: 100%;
+  display: block;
 }
 
 #site,
 #login {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .notification {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .notification .message {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 30px;
-    margin: 10px 20px;
-    padding: 15px;
-    border-radius: 5px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  margin: 10px 20px;
+  padding: 15px;
+  border-radius: 5px;
 }
 
 .notification .message.error {
-    background-color: rgba(255, 21, 21, 0.5);
-    color: rgb(207, 13, 13);
-    border: 2px solid rgb(207, 13, 13);
+  background-color: rgba(255, 21, 21, 0.1);
+  color: rgb(207, 13, 13);
+  border: 2px solid rgb(207, 13, 13);
 }
 
 .notification .message.success {
-    background-color: rgba(55, 240, 9, 0.5);
-    color: rgb(35, 175, 0);
-    border: 2px solid rgb(35, 175, 0);
+  background-color: rgba(55, 240, 9, 0.1);
+  color: rgb(35, 175, 0);
+  border: 2px solid rgb(35, 175, 0);
 }
 
 main {
-    flex: 1;
+  flex: 1;
 }
 
 label {
-    display: inline-block;
-    margin-top: 15px;
-    margin-bottom: 5px;
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 input,
 textarea {
-    border-radius: 4px;
-    border: 1px solid #e8eddf;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
-    transition: all 0.3s;
-    font-size: 1rem;
-    font-family: "Open Sans", sans-serif;
-    width: 100%;
+  border-radius: 4px;
+  border: 1px solid #e8eddf;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
+  transition: all 0.3s;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
 }
 
 input:hover,
 input:focus,
 textarea:hover,
 textarea:focus {
-    outline: none;
-    box-shadow: 0 6px 12px rgba(30, 60, 90, 0.2);
-    border-color: #f5cb5c;
+  outline: none;
+  box-shadow: 0 6px 12px rgba(30, 60, 90, 0.2);
+  border-color: #f5cb5c;
 }
 
 .btn {
-    display: inline-block;
-    padding: 10px 30px;
-    background: #f5cb5c;
-    border-radius: 4px;
-    color: #242423;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    box-shadow: 0 4px 8px rgba(30, 60, 90, 0.2);
-    transition: all 0.3s;
-    border: none;
-    font-size: 1rem;
-    font-family: "Raleway", Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    cursor: pointer;
-    margin-top: 10px;
+  display: inline-block;
+  padding: 10px 30px;
+  background: #f5cb5c;
+  border-radius: 4px;
+  color: #242423;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.2);
+  transition: all 0.3s;
+  border: none;
+  font-size: 1rem;
+  font-family: "Raleway", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .btn:hover {
-    background: #f0b719;
-    transform: scale(1.1);
+  background: #f0b719;
+  transform: scale(1.1);
 }
 
 #login .form-container {
-    margin: 100px auto 0 auto;
-    max-width: 350px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(30, 60, 90, 0.2);
-    border-radius: 5px;
+  margin: 100px auto 0 auto;
+  max-width: 350px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.2);
+  border-radius: 5px;
 }
