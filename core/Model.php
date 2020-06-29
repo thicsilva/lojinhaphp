@@ -86,10 +86,10 @@ abstract class Model
         }
     }
 
-    protected function prepare()
+    protected function prepare(): array
     {
         $result = [];
-        foreach ($this->attributes as $key => $value) {
+        foreach ($this->attributes as $key => $value) {            
             if (is_scalar($value)) {
                 $result[$key] = $this->escape($value);
             }
@@ -99,7 +99,7 @@ abstract class Model
 
     public function save()
     {
-        $newContent = $this->prepare();
+        $newContent = $this->prepare();        
 
         if (isset($this->attributes[$this->idField])) {
             $sets = [];
@@ -113,17 +113,17 @@ abstract class Model
             if ($this->logTimestamp === true) {
                 $newContent['updated_at'] = "'" . date('Y-m-d H:i:s') . "'";
             }
-            $sql = "UPDATE $this->table SET " . implode(', ', $sets) . "WHERE {$this->idField}='{$this->attributes[$this->idField]}';";
+            $sql = "UPDATE `$this->table` SET " . implode(', ', $sets) . "WHERE {$this->idField}='{$this->attributes[$this->idField]}';";
         } else {
             if ($this->logTimestamp === true) {
                 $newContent['created_at'] = "'" . date('Y-m-d H:i:s') . "'";
                 $newContent['updated_at'] = "'" . date('Y-m-d H:i:s') . "'";
             }
-            $sql = "INSERT INTO {$this->table} (" . implode(', ', array_keys($newContent)) . ') VALUES (' . implode(',', array_values($newContent)) . ');';
+            $sql = "INSERT INTO `$this->table` (" . implode(', ', array_keys($newContent)) . ') VALUES (' . implode(',', array_values($newContent)) . ');';
         }
         $stmt = self::$connection->prepare($sql);
         if ($stmt->execute()) {
-            return $stmt->fetchAll(\PDO::FETCH_CLASS, get_called_class());
+            return $stmt->rowCount();
         }
         return false;
     }
@@ -132,7 +132,7 @@ abstract class Model
     {
         $class = get_called_class();
         $table = (new $class())->table;
-        $sql = "SELECT * FROM " . (is_null($table) ? strtolower($class) : $table);
+        $sql = "SELECT * FROM `" . (is_null($table) ? strtolower($class) : $table) . "`";
         $sql .= ($filter !== '') ? " WHERE {$filter}" : "";
         $sql .= ($limit > 0) ? " LIMIT {$limit}" : "";
         $sql .= ($offset > 0) ? " OFFSET {$offset}" : "";
@@ -145,14 +145,16 @@ abstract class Model
         }
     }
 
-    public static function count()
+    public static function count(string $filter = '')
     {
         $class = get_called_class();
         $table = (new $class())->table;
-        $sql = "SELECT count(*) FROM $table ;";
-        $count = self::$connection->prepare($sql);
-        if ($count->execute()) {
-            return (int) $count->fetchColumn();
+        $sql = "SELECT count(*) FROM `$table`";
+        $sql .= ($filter !== '') ? " WHERE $filter" : "";
+        $sql .= ";";
+        $stmt = self::$connection->prepare($sql);
+        if ($stmt->execute()) {
+            return (int) $stmt->fetchColumn();
         }
         return false;
     }
@@ -180,11 +182,16 @@ abstract class Model
         }
     }
 
+    public static function findFirst($parameter = '')
+    {
+        return self::all($parameter, 1);
+    }
+
     public function destroy()
     {
         if (isset($this->content[$this->idField])) {
 
-            $sql = "DELETE FROM {$this->table} WHERE {$this->idField} = {$this->content[$this->idField]};";
+            $sql = "DELETE FROM `$this->table` WHERE {$this->idField} = {$this->content[$this->idField]};";
 
             if (self::$connection) {
                 return self::$connection->exec($sql);

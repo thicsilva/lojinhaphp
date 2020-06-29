@@ -7,15 +7,15 @@ use PDO;
 class Database
 {
     private static $_pdo;
-    public static function getInstance()
+    public static function getInstance(): PDO
     {
         if (!isset(self::$_pdo)) {
-            self::$_pdo = new PDO("mysql:dbname=" . DATABASE['db_name'] . ";host=" .DATABASE['db_host'] . ";port=" . DATABASE['db_port'], 
-                DATABASE['db_user'], 
-                DATABASE['db_password'], 
+            self::$_pdo = new PDO("mysql:dbname=" . DATABASE['db_name'] . ";host=" . DATABASE['db_host'] . ";port=" . DATABASE['db_port'],
+                DATABASE['db_user'],
+                DATABASE['db_password'],
                 [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_PERSISTENT => false
+                    PDO::ATTR_PERSISTENT => false,
                 ]);
         }
 

@@ -9,23 +9,29 @@ use Core\Controller;
 
 class PanelController extends Controller
 {
-    private $loggedUser;
+    private $authUser;
 
     public function __construct()
     {
-        $this->loggedUser = LoginHandler::checkLogin();
-        if ($this->loggedUser === false) {
+        $this->authUser = LoginHandler::checkLogin();
+        if ($this->authUser === false) {
             $this->redirect('/admin');
         }
     }
+
     public function index()
     {
         $totalProducts = Product::count();
-        $totalOrders = Order::count();
-        $firstDay = date('y-m-01 00:00:00');
-        $lastDay = date('y-m-t 23:59:59');
-        $monthSalesCount = count(Order::all("created_at>=$firstDay and created_at<=$lastDay"));
+        $firstDay = date('Y-m-01 00:00:00');
+        $lastDay = date('Y-m-t 23:59:59');
+        $totalOrders = Order::count("created_at>='$firstDay' and created_at<='$lastDay'");
+        $monthSales = Order::totalOnPeriod($firstDay, $lastDay);
 
-        $this->render('/admin/home');
+        $this->render('/admin/home', [
+            'totalOrders' => $totalOrders,
+            'totalProducts' => $totalProducts,
+            'monthSales' => $monthSales,
+            'authUser' => $this->authUser,
+        ]);
     }
 }

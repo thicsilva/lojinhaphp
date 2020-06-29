@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="<?=$base?>/assets/css/admin.css">
+    <link rel="stylesheet" href="<?=$base?>/assets/css/login.css">
 </head>
 <body>
   <div id="login">
-  <?php if (isset($_SESSION['flash'])): ?>
+  <?php if (!empty($flash)): ?>
     <div class="notification">
-      <div class="message <?=$_SESSION['flash']['type']; ?>">
-        <?=$_SESSION['flash']['message']; ?>
+      <div class="message <?=$flash['type'];?>">
+        <?=$flash['message'];?>
       </div>
     </div>
-  <?php 
-    unset($_SESSION['flash']);
-    endif 
-  ?>
+  <?php
+endif
+?>
     <main>
       <div class="form-container">
         <h2>Acesse sua conta</h2>
@@ -27,13 +26,14 @@
             <label for="password">Senha</label>
             <input type="password" name="password" id="password">
             <button type="submit" class="btn">Entrar</button>
-        </form>  
+
+        </form>
       </div>
   </main>
 
-  
-    
+
+
   </div>
-      
+
 </body>
 </html>
