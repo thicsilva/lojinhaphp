@@ -1,7 +1,6 @@
         <aside class="sidenav">
             <div class="sidenav-brand">
-                <a href="#">
-
+                <a href="<?=$base?>/admin/home">
                     <img src="<?=$base?>/assets/img/logo.png" alt="Lojinha">
                 </a>
                 <div class="sidenav-close-icon">
@@ -12,15 +11,20 @@
                 <div class="sidenav-profile-text"><?=$authUser->name?></div>
             </div>
             <ul class="sidenav-list">
-                <li class="sidenav-list-item">
-                    <a href="#">Pedidos</a>
-                </li>
-                <li class="sidenav-list-item">
-                    <a href="#">Produtos</a>
-                </li>
-
-                <li class="sidenav-list-item">
-                    <a href="#">Usuários</a>
-                </li>
+                <a href="<?=$base?>/admin/order">
+                    <li class="sidenav-list-item <?=($activeMenu=='order')?'active':''?>">
+                        Pedidos
+                    </li>
+                </a>
+                <a href="<?=$base?>/admin/product">
+                    <li class="sidenav-list-item <?=($activeMenu=='product')?'active':''?>">
+                        Produtos
+                    </li>
+                </a>
+                <a href="<?=$base?>/admin/user">
+                    <li class="sidenav-list-item <?=($activeMenu=='user')?'active':''?>">
+                        Usuários
+                    </li>
+                </a>
             </ul>
         </aside>

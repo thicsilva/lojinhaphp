@@ -1,9 +1,13 @@
 <?php $render('admin/header', [
     'authUser' => $authUser,
     'datatableCss' => '//cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css',
+    'activeMenu' => 'product'
 ]);?>
         <main class="main">
-            <div class="table-container">
+            <div class="container">
+                <div class="btn-container">
+                    <a href="<?=$base?>/admin/product/create" class="btn yellow">Adicionar</a>
+                </div>
                 <table id="datatable">
                     <thead>
                         <tr>

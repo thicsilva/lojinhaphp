@@ -21,7 +21,14 @@ class ProductController extends Controller
         $products = Product::all();
         $this->render('/admin/products/index', [
             'products' => $products,
-            'authUser' => $this->authUser,
+            'authUser' => $this->authUser,            
+        ]);
+    }
+
+    public function create()
+    {
+        $this->render('/admin/products/create', [
+            'authUser' => $this->authUser,   
         ]);
     }
 }

@@ -6,6 +6,7 @@ $router = new Router();
 
 /** Rotas do Site */
 $router->get('/', 'Site\HomeController@index');
+$router->get('/product/{id}', 'Site\HomeController@view');
 $router->post('/cart/add', 'Site\CartController@add');
 $router->post('/cart/update', 'Site\CartController@update');
 $router->post('/cart/remove', 'Site\CartController@remove');
@@ -36,3 +37,6 @@ $router->post('/admin/user/store', 'Admin\UserController@store');
 $router->get('/admin/user/edit/{id}', 'Admin\UserController@edit');
 $router->post('/admin/user/edit/{id}', 'Admin\UserController@update');
 $router->post('/admin/user/delete/{id}', 'Admin\UserController@delete');
+
+$router->get('/admin/order', 'Admin\OrderController@index');
+$router->get('/admin/order/view/{id}', 'Admin\OrderController@view');

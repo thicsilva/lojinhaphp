@@ -41,4 +41,12 @@ class HomeController extends Controller
             ],
         ]);
     }
+
+    public function view($param)
+    {
+        $product =  Product::find($param['id']);
+        $this->render('/site/view', [
+            'product' => $product
+        ]);
+    }
 }

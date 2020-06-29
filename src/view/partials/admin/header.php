@@ -27,7 +27,12 @@
                 <a href="#" onclick="document.getElementById('logout').submit()">Logout</a>
             </div>
         </header>
-        <?php $render('admin/sidenav', ['authUser' => $authUser]);?>
+        <?php 
+            $render('admin/sidenav', [
+                'authUser' => $authUser,
+                'activeMenu' => $activeMenu
+            ]);
+        ?>
 
 
 

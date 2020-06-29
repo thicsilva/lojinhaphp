@@ -1,4 +1,4 @@
-<?php $render('admin/header', ['authUser' => $authUser]);?>
+<?php $render('admin/header', ['authUser' => $authUser, 'activeMenu'=>'']);?>
         <main class="main">
 
             <div class="main-overview">
