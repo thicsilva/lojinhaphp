@@ -1,5 +1,5 @@
         <footer class="footer">
-            <div class="footer-copyright">&copy; Lojinha &copy; <?=date('Y')?></div>
+            <div class="footer-copyright">Lojinha &copy; <?=date('Y')?></div>
             <div class="footer-signature">Desenvolvido com 🧡 por <a href="//github.com/thicsilva">@thicsilva</a></div>
         </footer>
     </div>

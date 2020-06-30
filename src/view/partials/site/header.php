@@ -23,27 +23,27 @@
           </form>
         </section>
         <section class="menu">
+          <a href="<?=$base?>/wish" class="wish">
+            <i class="fas fa-heart"></i>
+          </a>
           <a href="<?=$base?>/cart" class="cart">
             <i class="fas fa-shopping-basket"></i>
             <?php if (!empty($_SESSION['cart'])): ?>
             <span class="badge"><?=count($_SESSION['cart'])?></span>
             <?php endif?>
           </a>
-          <a href="<?=$base?>/wish" class="wish">
-            <i class="fas fa-heart"></i>
-          </a>
         </section>
       </nav>
     </header>
       <?php if (isset($_SESSION['flash'])): ?>
       <div class="notification">
-        <div class="message <?=$_SESSION['flash']['type']; ?>">
-          <?=$_SESSION['flash']['message']; ?>
+        <div class="message <?=$_SESSION['flash']['type'];?>">
+          <?=$_SESSION['flash']['message'];?>
         </div>
       </div>
-      <?php 
-        unset($_SESSION['flash']);
-        endif 
-      ?>
+      <?php
+unset($_SESSION['flash']);
+endif
+?>
     <main>
-    
+

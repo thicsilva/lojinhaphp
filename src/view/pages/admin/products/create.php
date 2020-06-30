@@ -1,11 +1,11 @@
 <?php $render('admin/header', [
     'authUser' => $authUser,
     'datatableCss' => '//cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css',
-    'activeMenu' => 'product'
+    'activeMenu' => 'product',
 ]);?>
         <main class="main">
             <div class="container">
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="<?=$base?>/admin/product/store" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name">Nome</label>
                         <input type="text" name="name" id="name" class="input-control">
@@ -20,11 +20,11 @@
                     </div>
                     <div class="form-group">
                         <label for="image">Imagem</label>
-                        <input type="file" name="image" id="image">
+                        <input type="file" name="image[]" id="image" class="input-control">
                     </div>
                     <button class="btn yellow">Salvar</button>
                     <a href="<?=$base?>/admin/product" class="btn default">Cancelar</a>
-                </form>                
+                </form>
             </div>
 
         </main>
