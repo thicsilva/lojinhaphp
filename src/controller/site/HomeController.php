@@ -7,7 +7,7 @@ use Core\Controller;
 
 class HomeController extends Controller
 {
-    private $limitPerPage = 9;
+    private $limitPerPage = 12;
 
     public function index()
     {
@@ -44,9 +44,9 @@ class HomeController extends Controller
 
     public function view($param)
     {
-        $product =  Product::find($param['id']);
+        $product = Product::find($param['id']);
         $this->render('/site/view', [
-            'product' => $product
+            'product' => $product,
         ]);
     }
 }

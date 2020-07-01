@@ -7,7 +7,7 @@ use Core\Controller;
 
 class WishController extends Controller
 {
-    private $limitPerPage = 9;
+    private $limitPerPage = 12;
 
     public function index()
     {

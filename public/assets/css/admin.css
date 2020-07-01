@@ -156,12 +156,12 @@
 }
 
 .green {
-  background-color: rgb(12, 104, 9);
+  background-color: rgb(83, 145, 67);
 }
 
 .overviewcard.green .overviewcard-icon {
   background-color: #fff;
-  color: rgb(12, 104, 9);
+  color: rgb(83, 145, 67);
 }
 
 .overviewcard-icon {
@@ -279,12 +279,12 @@ select:focus {
 }
 
 .btn.green {
-  background-color: rgb(12, 104, 9);
+  background-color: rgb(83, 145, 67);
   color: #fff;
 }
 
 .btn.red {
-  background-color: rgb(161, 52, 44);
+  background-color: rgb(207, 13, 13);
   color: #fff;
 }
 

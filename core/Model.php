@@ -89,7 +89,7 @@ abstract class Model
     protected function prepare(): array
     {
         $result = [];
-        foreach ($this->attributes as $key => $value) {            
+        foreach ($this->attributes as $key => $value) {
             if (is_scalar($value)) {
                 $result[$key] = $this->escape($value);
             }
@@ -99,7 +99,7 @@ abstract class Model
 
     public function save()
     {
-        $newContent = $this->prepare();        
+        $newContent = $this->prepare();
 
         if (isset($this->attributes[$this->idField])) {
             $sets = [];
@@ -123,7 +123,11 @@ abstract class Model
         }
         $stmt = self::$connection->prepare($sql);
         if ($stmt->execute()) {
-            return $stmt->rowCount();
+            $id = (isset($this->attributes[$this->idField])) ? $this->attributes[$this->idField] : self::$connection->lastInsertId();
+            $class = get_called_class()::find($id);
+            var_dump($class);
+            exit;
+            return $class;
         }
         return false;
     }

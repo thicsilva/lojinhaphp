@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Handler\ImageHandler;
 use App\Handler\LoginHandler;
 use App\Model\Product;
 use Core\Controller;
@@ -34,7 +35,6 @@ class ProductController extends Controller
 
     public function store()
     {
-        $id = 123;
 
         $allowedImage = [
             'image/jpeg',
@@ -42,18 +42,38 @@ class ProductController extends Controller
             'image/png',
         ];
 
-        $image = (!empty($_FILES['image'])) ? $_FILES['image'] : [];
+        $name = filter_input(INPUT_POST, 'name');
+        $description = filter_input(INPUT_POST, 'description');
+        $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
 
-        for ($q = 0; $q < count($image['name']); $q++) {
-            $tmp_name = $image['tmp_name'][$q];
-            $type = $image['type'][$q];
+        if (!$name || !$description || !$price) {
+            $_SESSION['flash'] = [
+                'type' => 'error',
+                'message' => 'Todos os campos precisam ser preenchidos',
+            ];
 
-            if (in_array($type, $allowedImage)) {
-                ImageHandler::createImage($id, $tmp_name, $type);
-            }
+            $this->redirect('/admin/product/create');
+
         }
+        $image = (!empty($_FILES['image'])) ? $_FILES['image'] : '';
+
+        $img = false;
+
+        $tmp_name = $image['tmp_name'];
+        $type = $image['type'];
+
+        if (in_array($type, $allowedImage)) {
+            $img = ImageHandler::createImage($tmp_name, $type);
+        }
+
+        $product = new Product();
+        $product->name = $name;
+        $product->description = $description;
+        $product->price = $price;
+        $product->image = ($img) ? $img : 'noimage.png';
+        $product->save();
+
+        $this->redirect('/admin/product');
     }
 
-   
-    }
 }

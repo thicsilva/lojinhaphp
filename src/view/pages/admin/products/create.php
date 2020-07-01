@@ -20,7 +20,7 @@
                     </div>
                     <div class="form-group">
                         <label for="image">Imagem</label>
-                        <input type="file" name="image[]" id="image" class="input-control">
+                        <input type="file" name="image" id="image" class="input-control">
                     </div>
                     <button class="btn yellow">Salvar</button>
                     <a href="<?=$base?>/admin/product" class="btn default">Cancelar</a>

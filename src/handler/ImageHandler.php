@@ -5,7 +5,7 @@ namespace App\Handler;
 class ImageHandler
 {
 
-    public static function createImage($id, $tmp_name, $type)
+    public static function createImage($tmp_name, $type)
     {
         switch ($type) {
             case 'image/jpg':
@@ -57,8 +57,11 @@ class ImageHandler
 
             $img = imagecreatetruecolor($width, $height);
             imagecopyresampled($img, $o_img, -$px, -$py, 0, 0, $img_w, $img_h, $o_width, $o_height);
-            imagejpeg($img, dirname(__DIR__, 3) . '/', 100);
-            exit;
+            $imgName = md5(microtime() . rand(0, 9999));
+            imagejpeg($img, dirname(__DIR__, 2) . '/public/assets/media/' . $imgName, 100);
+            return $imgName;
         }
+
+        return false;
     }
 }

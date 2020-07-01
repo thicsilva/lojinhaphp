@@ -35,9 +35,6 @@ class OrderController extends Controller
 
         $order->save();
 
-        var_dump($order);
-        exit;
-
         $cartItems = $_SESSION['cart'];
 
         foreach ($cartItems as $key => $item) {
