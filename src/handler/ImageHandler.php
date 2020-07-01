@@ -58,7 +58,7 @@ class ImageHandler
             $img = imagecreatetruecolor($width, $height);
             imagecopyresampled($img, $o_img, -$px, -$py, 0, 0, $img_w, $img_h, $o_width, $o_height);
             $imgName = md5(microtime() . rand(0, 9999));
-            imagejpeg($img, dirname(__DIR__, 2) . '/public/assets/media/' . $imgName, 100);
+            imagejpeg($img, dirname(__DIR__, 2) . '/public/assets/media/' . $imgName . '.png', 100);
             return $imgName;
         }
 
