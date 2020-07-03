@@ -12,19 +12,20 @@
             </div>
             <ul class="sidenav-list">
                 <a href="<?=$base?>/admin/order">
-                    <li class="sidenav-list-item <?=($activeMenu=='order')?'active':''?>">
+                    <li class="sidenav-list-item <?=($activeMenu == 'order') ? 'active' : ''?>">
                         Pedidos
                     </li>
                 </a>
                 <a href="<?=$base?>/admin/product">
-                    <li class="sidenav-list-item <?=($activeMenu=='product')?'active':''?>">
+                    <li class="sidenav-list-item <?=($activeMenu == 'product') ? 'active' : ''?>">
                         Produtos
                     </li>
                 </a>
                 <a href="<?=$base?>/admin/user">
-                    <li class="sidenav-list-item <?=($activeMenu=='user')?'active':''?>">
+                    <li class="sidenav-list-item <?=($activeMenu == 'user') ? 'active' : ''?>">
                         Usuários
                     </li>
                 </a>
             </ul>
         </aside>
+

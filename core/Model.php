@@ -125,8 +125,7 @@ abstract class Model
         if ($stmt->execute()) {
             $id = (isset($this->attributes[$this->idField])) ? $this->attributes[$this->idField] : self::$connection->lastInsertId();
             $class = get_called_class()::find($id);
-            var_dump($class);
-            exit;
+
             return $class;
         }
         return false;
@@ -169,9 +168,9 @@ abstract class Model
         $idField = (new $class())->idField;
         $table = (new $class())->table;
 
-        $sql = 'SELECT * FROM ' . (is_null($table) ? strtolower($class) : $table);
-        $sql .= ' WHERE ' . (is_null($idField) ? 'id' : $idField);
-        $sql .= " = {$parameter} ;";
+        $sql = "SELECT * FROM `" . (is_null($table) ? strtolower($class) : $table);
+        $sql .= "` WHERE " . (is_null($idField) ? 'id' : $idField);
+        $sql .= " = $parameter;";
 
         if (self::$connection) {
             $result = self::$connection->query($sql);
@@ -193,15 +192,14 @@ abstract class Model
 
     public function destroy()
     {
-        if (isset($this->content[$this->idField])) {
-
-            $sql = "DELETE FROM `$this->table` WHERE {$this->idField} = {$this->content[$this->idField]};";
-
-            if (self::$connection) {
-                return self::$connection->exec($sql);
-            } else {
-                throw new Exception("Não há conexão com Banco de dados!");
-            }
+        $class = get_called_class();
+        $idField = (new $class())->idField;
+        $sql = "DELETE FROM `$this->table` WHERE $idField = " . $this->attributes[$this->idField];
+        $stmt = self::$connection->prepare($sql);
+        if ($stmt->execute()) {
+            $stmt->rowCount();
+        } else {
+            throw new Exception("Não há conexão com Banco de dados!");
         }
     }
 }

@@ -4,6 +4,16 @@
     'activeMenu' => 'product',
 ]);?>
         <main class="main">
+        <?php if (isset($_SESSION['flash'])): ?>
+            <div class="notification">
+                <div class="message <?=$_SESSION['flash']['type'];?>">
+                <?=$_SESSION['flash']['message'];?>
+                </div>
+            </div>
+            <?php
+unset($_SESSION['flash']);
+endif
+?>
             <div class="container">
                 <form action="<?=$base?>/admin/product/store" method="post" enctype="multipart/form-data">
                     <div class="form-group">

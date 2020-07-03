@@ -1,5 +1,15 @@
-<?php $render('admin/header', ['authUser' => $authUser, 'activeMenu'=>'']);?>
+<?php $render('admin/header', ['authUser' => $authUser, 'activeMenu' => '']);?>
         <main class="main">
+                    <?php if (isset($_SESSION['flash'])): ?>
+                        <div class="notification">
+                            <div class="message <?=$_SESSION['flash']['type'];?>">
+                            <?=$_SESSION['flash']['message'];?>
+                            </div>
+                        </div>
+                        <?php
+unset($_SESSION['flash']);
+endif
+?>
 
             <div class="main-overview">
                 <div class="overviewcard red">

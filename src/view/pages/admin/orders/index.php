@@ -1,9 +1,10 @@
 <?php $render('admin/header', [
     'authUser' => $authUser,
     'datatableCss' => '//cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css',
+    'activeMenu' => 'order',
 ]);?>
         <main class="main">
-            <div class="table-container">
+            <div class="container">
                 <table id="datatable">
                     <thead>
                         <tr>
@@ -16,7 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($products as $order): ?>
+                        <?php foreach ($orders as $order): ?>
                         <tr>
                             <td><?=$order->id?></td>
                             <td><?=$order->name?></td>

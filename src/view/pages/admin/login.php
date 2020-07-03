@@ -20,6 +20,7 @@ endif
     <main>
       <div class="form-container">
         <h2>Acesse sua conta</h2>
+        <?=password_hash('123', PASSWORD_BCRYPT);?>
         <form action="<?=$base?>/admin/login" method="post">
             <label for="email">Email</label>
             <input type="email" name="email" id="email">

@@ -3,6 +3,7 @@
 namespace App\Controller\Site;
 
 use App\Model\Order;
+use App\Model\OrderProduct;
 use Core\Controller;
 
 class OrderController extends Controller
@@ -33,12 +34,25 @@ class OrderController extends Controller
         $order->address = $address;
         $order->email = $email;
 
-        $order->save();
+        $order = $order->save();
 
         $cartItems = $_SESSION['cart'];
+        $total = 0;
 
-        foreach ($cartItems as $key => $item) {
-
+        foreach ($cartItems as $item) {
+            $orderProduct = new OrderProduct();
+            $orderProduct->order_id = $order->id;
+            $orderProduct->product_id = $item['id'];
+            $orderProduct->unit_price = (double) $item['price'];
+            $orderProduct->quantity = (int) $item['quantity'];
+            $orderProduct->total_price = $orderProduct->unit_price * $orderProduct->quantity;
+            $orderProduct->save();
+            $total += $orderProduct->total_price;
         }
+        $order->total = $total;
+        $order->save();
+        unset($_SESSION['cart']);
+
+        $this->render('site/success', ['order' => $order]);
     }
 }
